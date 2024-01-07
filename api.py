@@ -4,6 +4,10 @@ from fastapi import FastAPI, File, UploadFile, HTTPException, Response
 from fastapi.middleware.cors import CORSMiddleware
 import numpy as np
 import json
+from pydantic import BaseModel
+
+class HideMessageRequest(BaseModel):
+    secret_msg: str
 
 app = FastAPI()
 
@@ -103,7 +107,7 @@ async def root():
 
 # API endpoint to hide secret message within an image
 @app.post("/hide_message")
-async def hide_message(image: UploadFile = File(...), secret_msg: str = ""):
+async def hide_message(image: UploadFile = File(...), secret: HideMessageRequest):
     try:
         # Read image using OpenCV
         content = await image.read()
@@ -111,7 +115,7 @@ async def hide_message(image: UploadFile = File(...), secret_msg: str = ""):
         img = cv2.imdecode(nparr, cv2.IMREAD_UNCHANGED)
 
         # Hide the secret message in the image
-        encoded_image = hide_data(img, secret_msg)
+        encoded_image = hide_data(img, secret.secret_msg)
 
         # Convert the image to bytes for response
         _, encoded_image_data = cv2.imencode(".png", encoded_image)
