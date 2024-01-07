@@ -107,7 +107,7 @@ async def root():
 
 # API endpoint to hide secret message within an image
 @app.post("/hide_message")
-async def hide_message(image: UploadFile = File(...), secret: HideMessageRequest):
+async def hide_message(image: UploadFile = File(...), secret: HideMessageRequest = Body(...) ):
     try:
         # Read image using OpenCV
         content = await image.read()
