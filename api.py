@@ -1,13 +1,10 @@
 # Importing the required libraries
 import cv2
-from fastapi import FastAPI, File, UploadFile, HTTPException, Response
+from fastapi import FastAPI, File, UploadFile, HTTPException, Response, Form
 from fastapi.middleware.cors import CORSMiddleware
 import numpy as np
 import json
-from pydantic import BaseModel
-
-class HideMessageRequest(BaseModel):
-    secret_msg: str
+import base64
 
 app = FastAPI()
 
@@ -105,9 +102,8 @@ def show_data(img):
 async def root():
     return {"message": "Server is alive"}
 
-# API endpoint to hide secret message within an image
 @app.post("/hide_message")
-async def hide_message(image: UploadFile = File(...), secret: HideMessageRequest = Body(...) ):
+async def hide_message(image: UploadFile = File(...), secret_msg: str = Form(...)):
     try:
         # Read image using OpenCV
         content = await image.read()
@@ -115,15 +111,20 @@ async def hide_message(image: UploadFile = File(...), secret: HideMessageRequest
         img = cv2.imdecode(nparr, cv2.IMREAD_UNCHANGED)
 
         # Hide the secret message in the image
-        encoded_image = hide_data(img, secret.secret_msg)
+        encoded_image = hide_data(img, secret_msg)
 
-        # Convert the image to bytes for response
+        # Convert the image to bytes
         _, encoded_image_data = cv2.imencode(".png", encoded_image)
         encoded_image_bytes = encoded_image_data.tobytes()
 
-        return Response(content=encoded_image_bytes, media_type="image/png")
+        # Encode the image bytes to base64
+        encoded_image_base64 = base64.b64encode(encoded_image_bytes).decode()
+
+        # Return the base64 encoded image
+        return {"base64_image": encoded_image_base64}
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
+
 
 # API endpoint to retrieve the secret message from an image
 @app.post("/retrieve_message")
