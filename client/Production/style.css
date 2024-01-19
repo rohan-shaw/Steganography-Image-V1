@@ -1,0 +1,270 @@
+*, *::before, *::after{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Jost', sans-serif;
+    scroll-behavior: smooth;
+}
+
+:root{
+    --main: rgb(212, 41, 69);
+}
+
+body{
+    background-color: #000;
+    color: #fff;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+header{
+    z-index: 999;
+}
+
+.navbar{
+    position: absolute;
+    background-color: transparent!important;
+}
+
+.container-fluid{
+    width: 100vw!important;
+    padding: .2rem 2rem;
+}
+
+.navbar-brand{
+    width: 45%!important;
+    font-family: 'Poppins', sans-serif;
+    font-size: 2rem;
+    color: white;
+}
+
+.navbar-brand:hover{
+    color: white;
+}
+
+span.logo {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.lgexp{
+    position: relative;
+}
+
+
+span.logo-one {
+    font-size: 2.6rem;
+}
+
+ul li a{
+    color: white!important;
+}
+
+ul li a.active {
+    color: var(--main)!important;
+    font-weight: 600;
+  }
+  
+
+span.logoSpan {
+    color: var(--main);
+    font-weight: 700;
+}
+
+nav#navbarSupportedContent {
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 3rem;
+}
+
+ul li{
+    font-size: 1.1rem;
+    width: max-content;
+}
+
+.svg-header {
+    width: 4.12rem;
+    height: auto;
+}
+
+.svg-header-parent{
+    position: relative;
+}
+
+.hover-text {
+    display: none;
+    position: absolute;
+    bottom: -10px;
+    right: 0;
+    color: var(--main);
+    font-size: .7rem;
+    font-weight: 500;
+    transition: all 1s ease-in-out ;
+}
+
+.auth-nav a:hover .hover-text {
+display: block; /* Show the text on hover */
+}
+  
+section{
+    height: 100vh;
+    width: 100vw;
+}
+
+#closeModal, #download, #copy{
+    font-size: 1rem !important;
+    width: 45%!important;
+    color: #000;
+    margin-top: 0!important;
+}
+
+.dplxc {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    color: var(--main)!important;
+}
+
+#exitModal{
+    font-size: 1.2rem !important;
+}
+
+.result {
+    margin-top: 20px;
+}
+
+.one{
+    display: flex;
+    flex-direction: column;
+    /* position: relative; */
+    padding: 1rem;
+    margin: 0;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.container-wrap{
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.container-wrap .hide, .retrieve{
+    width: 45vw;
+}
+
+.hide{
+    border-right: 2px solid var(--main);
+}
+
+.one h1{
+    font-size: 3rem;
+}
+
+.one h2{
+    font-size: 1.7rem;
+    margin-top: 3rem;
+}
+
+.box{
+    padding: 1.2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+}
+
+.form-control, .form-control:focus{
+    background-color: transparent;
+    color: var(--main);
+}
+
+.form-control::placeholder{
+    color: #eee;
+}
+input[type="file"]{
+    color: #eee;
+}
+
+input[type="file"]::file-selector-button{
+    background-color: var(--main);
+    font-weight: 700;
+}
+
+input[type="file"]::file-selector-button:hover{
+    background-color: var(--main)!important;
+    color: black!important;
+}
+
+input[type="file"]::file-selector-button:focus{
+    background-color: var(--main)!important;
+    color: black!important;
+}
+
+input[type="file"]::-webkit-file-upload-button:hover{
+    background-color: var(--main)!important;
+    color: black!important;
+}
+
+.btn{
+    background-color: transparent;
+    color: white;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-color: var(--main);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2.4rem!important;
+    margin: 0 auto;
+}
+
+.btn:hover{
+    background-color: var(--main);
+    color: white;
+    border-color: transparent;
+}
+
+.btn:active{
+    background-color: var(--main);
+    color: white;
+    border-color: transparent;
+}
+
+.btn:focus{
+    background-color: var(--main);
+    color: white;
+    border-color: transparent;
+}
+
+.btn:focus-visible{
+    background-color: var(--main);
+    color: white;
+    border-color: transparent;
+}
+
+.btn:focus-within{
+    background-color: var(--main);
+    color: white;
+    border-color: transparent;
+}
+
+.btn:visited{
+    background-color: var(--main);
+    color: white;
+    border-color: transparent;
+}
+
+.btn:disabled{
+    background-color: var(--main);
+    color: white;
+    border-color: transparent;
+}
