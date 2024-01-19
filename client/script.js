@@ -22,7 +22,7 @@ const hideSecret = async () => {
         const hideFormData = new FormData(hideForm);
         console.log([...hideFormData.entries()]);
 
-        hideApiUrl = 'https://rohanshaw-steganography-image-v1.hf.space/hide_message';
+        hideApiUrl = 'https://localhost:7860/hide_message';
 
         try {
             const res = await axios.post(hideApiUrl, hideFormData);
@@ -70,7 +70,7 @@ const retrieveSecret = async () => {
 
         const retrieveFormData = new FormData(retrieveForm);
 
-        retrieveApiUrl = 'https://rohanshaw-steganography-image-v1.hf.space/retrieve_message';
+        retrieveApiUrl = 'https://localhost:7860/retrieve_message';
 
         try {
             const res = await axios.post(retrieveApiUrl, retrieveFormData);
