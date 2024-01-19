@@ -1,0 +1,6 @@
+opencv-python-headless
+fastapi
+python-multipart
+numpy
+uvicorn
+motor
